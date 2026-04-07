@@ -6,3 +6,4 @@ const supabaseKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY as string;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default supabase;
+
