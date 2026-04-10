@@ -1,0 +1,6 @@
+/* Este archivo es el punto de entrada para los estilos de NativeWind,
+que es la librería que usamos para escribir estilos con Tailwind en React Native. */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
