@@ -1,19 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import supabase from '@/lib/supabase'
+
 
 const Login = () => {
+  
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleLogin = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      if (error) {
+        console.error('Error al iniciar sesión:', error.message)
+      } else {
+        console.log('Usuario autenticado:', data.user)
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error)
+    }
+  }
+
   return (
     <View className='flex-1 items-center justify-center bg-white'>
     <Text className='text-2xl font-bold mb-4'>Iniciar sesión</Text>
     <Text> Usuario/email </Text>
-    <TextInput className='w-3/4 h-10 border border-gray-300 rounded-md px-2 mb-4' placeholder='Ingresa tu usuario o email' />
+    <TextInput onChangeText={setEmail} 
+    value={email}
+    className='w-3/4 h-10 border border-gray-300 rounded-md px-2 mb-4' 
+    placeholder='Ingresa tu usuario o email' />
     <Text> Contraseña </Text>
-    <TextInput className='w-3/4 h-10 border border-gray-300 rounded-md px-2 mb-4' placeholder='Ingresa tu contraseña' secureTextEntry />
-    <TouchableOpacity className='w-3/4 h-10 bg-purple-500 rounded-md items-center justify-center mb-4'>
+    <TextInput onChangeText={setPassword} 
+    value={password}
+    className='w-3/4 h-10 border border-gray-300 rounded-md px-2 mb-4' 
+    placeholder='Ingresa tu contraseña' secureTextEntry />
+
+    {/* --------------------BOTONES-------------------- */}
+    <TouchableOpacity onPress={handleLogin}
+    className='w-3/4 h-10 bg-purple-500 rounded-md items-center justify-center mb-4'> 
       <Text className='text-white font-bold'>Iniciar sesión</Text>
     </TouchableOpacity>
     <TouchableOpacity>
-      <Text className='text-purple-500'>¿Olvidaste tu contraseña?</Text>
+      <Text className='text-purple-500'>¿Has olvidado tu contraseña?</Text>
     </TouchableOpacity>
   </View>
   )
