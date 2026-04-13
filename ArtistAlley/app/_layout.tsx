@@ -1,3 +1,12 @@
 // Layout raíz
-import {global.css} from './global.css';
+import '../global.css';
 import { Stack } from 'expo-router';
+
+const RootLayout = () => {
+  return (
+    <Stack /> 
+   
+  )
+};
+
+export default RootLayout;
