@@ -28,6 +28,10 @@ const Login = () => {
     }
   }
 
+  const toSignup = () => {
+    router.push('/(auth)/signup')
+  }
+
   return (
     <View className='flex-1 items-center justify-center bg-white'>
     <Text className='text-2xl font-bold mb-4'>Iniciar sesión</Text>
@@ -46,6 +50,9 @@ const Login = () => {
     <TouchableOpacity onPress={handleLogin} 
     className='w-3/4 h-10 bg-purple-500 rounded-md items-center justify-center mb-4'> 
       <Text className='text-white font-bold'>Iniciar sesión</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={toSignup}>
+      <Text className='text-purple-500'>Crear cuenta</Text>
     </TouchableOpacity>
     <TouchableOpacity>
       <Text className='text-purple-500'>¿Has olvidado tu contraseña?</Text>
