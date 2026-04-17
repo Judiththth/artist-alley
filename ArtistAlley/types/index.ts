@@ -1,3 +1,8 @@
+export type User = {
+  id: string;
+  email: string;
+}
+
 export type Product = {   
 id: string
 user_id: string
